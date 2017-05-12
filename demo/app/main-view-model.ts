@@ -3,13 +3,18 @@ import {NativescriptAzureStorage} from 'nativescript-azure-storage';
 
 export class HelloWorldModel extends Observable {
   public message: string;
-  private nativescriptAzureStorage: NativescriptAzureStorage;
+  public azureStorageConnectionString =
+    `DefaultEndpointsProtocol=https;` +
+    `AccountName=fmmobile;` +
+    `AccountKey=Q8nTz/8b6TVMoPVAij2mAIw0yQVTfZhTklcvK8b4kWnMHvHGIQYOdqbsSxVDq1sdWqjuMzYwFj276ydg8Z8wKQ==`;
 
   constructor() {
     super();
 
-    this.nativescriptAzureStorage = new NativescriptAzureStorage();
-    this.message = this.nativescriptAzureStorage.message;
-    console.log(this.message);
+    let azureStorage = new NativescriptAzureStorage(this.azureStorageConnectionString);
+    console.log(azureStorage.connectionString);
+    azureStorage.addRow('checkout', { delivered: false }, 'teste', 'teste')
+    .then(() => console.log('okokok'))
+    .catch((err) => console.log(err));
   }
 }

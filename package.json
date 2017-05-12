@@ -48,5 +48,8 @@
     "typescript": "~2.2.1",
     "prompt": "~1.0.0",
     "rimraf": "~2.5.0"
+  },
+  "dependencies": {
+    "async": "^2.4.0"
   }
 }

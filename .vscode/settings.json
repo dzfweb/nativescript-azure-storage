@@ -9,6 +9,7 @@
     "**/*.js": true,
     "**/*.map": true,
     "**/node_modules": true,
-    "**/hooks": true
+    "**/hooks": true,
+    "**/platforms": true
   }
 }
