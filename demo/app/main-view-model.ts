@@ -5,16 +5,16 @@ export class HelloWorldModel extends Observable {
   public message: string;
   public azureStorageConnectionString =
     `DefaultEndpointsProtocol=https;` +
-    `AccountName=fmmobile;` +
-    `AccountKey=Q8nTz/8b6TVMoPVAij2mAIw0yQVTfZhTklcvK8b4kWnMHvHGIQYOdqbsSxVDq1sdWqjuMzYwFj276ydg8Z8wKQ==`;
+    `AccountName=accountName;` +
+    `AccountKey=accountKey`;
 
   constructor() {
     super();
 
     let azureStorage = new NativescriptAzureStorage(this.azureStorageConnectionString);
     console.log(azureStorage.connectionString);
-    azureStorage.addRow('checkout', { delivered: false }, 'teste', 'teste')
-    .then(() => console.log('okokok'))
+    azureStorage.addRow('tableName', { delivered: false }, 'teste', 'teste')
+    .then(() => console.log('ok'))
     .catch((err) => console.log(err));
   }
 }
