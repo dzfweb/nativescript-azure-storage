@@ -1,0 +1,12 @@
+//default elements
+android {
+    productFlavors {
+        "nativescriptazurestorage" {
+            dimension "nativescriptazurestorage"
+        }
+    }
+}
+
+dependencies {
+    compile 'com.microsoft.azure.android:azure-storage-android:1.0.0'
+}
