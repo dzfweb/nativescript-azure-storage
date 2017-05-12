@@ -25,3 +25,5 @@ let azureStorage = new NativescriptAzureStorage(this.azureStorageConnectionStrin
 `listTables`;
 
 `listRows`:
+
+`Support for iOS`;
