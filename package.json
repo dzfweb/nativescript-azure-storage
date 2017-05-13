@@ -1,20 +1,19 @@
 {
   "name": "nativescript-azure-storage",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Azure Storage for NativeScript",
   "main": "nativescript-azure-storage",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "3.0.0",
-      "ios": "3.0.0"
+      "android": "2.5.0"
     }
   },
   "scripts": {
     "build": "tsc",
     "demo.ios": "npm run preparedemo && cd demo && tns run ios --emulator",
     "demo.ios.device": "npm run preparedemo && cd demo && tns run ios",
-    "demo.android": "npm run preparedemo && cd demo && tns run android --emulator --stacktrace --debug",
+    "demo.android": "npm run preparedemo && cd demo && tns run android --emulator",
     "test.ios": "cd demo && tns test ios --emulator",
     "test.ios.device": "cd demo && tns test ios",
     "test.android": "cd demo && tns test android",

@@ -1,5 +1,12 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page">
-  <StackLayout class="p-20">
-    <Label text="Test" class="t-20 text-center c-black" textWrap="true"/>
-  </StackLayout>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
+    
+    <Page.actionBar>
+        <ActionBar title="NativeScript Azure Storage" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+   
+    <StackLayout class="p-20">
+        <Label text="Click to Test" class="h1 text-center"/>
+        <Button text="TEST" tap="{{ onTap }}" class="btn btn-primary btn-active"/>
+    </StackLayout>
 </Page>

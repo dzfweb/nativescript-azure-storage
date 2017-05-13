@@ -4,6 +4,9 @@
         "quotemark": [true, "single", "avoid-escape"],
         "no-string-literal": false,
         "member-access": false,
-        "forin": false
+        "forin": false,
+        "member-ordering": [
+            false
+        ]
     }
 }

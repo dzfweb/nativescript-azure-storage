@@ -2,18 +2,22 @@ import async from 'async';
 declare var com: any;
 
 export class NativescriptAzureStorage {
-  public connectionString: string = undefined;
+  private storageAccount: any;
+  private tableClient: any;
+  private connectionString: string = undefined;
 
   constructor(connectionString: string) {
+    let policy = new android.os.StrictMode.ThreadPolicy.Builder().permitAll().build();
+    android.os.StrictMode.setThreadPolicy(policy);
+
     this.connectionString = connectionString;
+    this.storageAccount = com.microsoft.azure.storage.CloudStorageAccount.parse(this.connectionString);
+    this.tableClient = this.storageAccount.createCloudTableClient();
   }
 
   createTable(tableName: string): Promise<any> {
-    if (this.connectionString) {
-      let storageAccount = this.getStorageAccount();
-      let tableClient = storageAccount.createCloudTableClient();
-      let cloudTable = tableClient.getTableReference(tableName);
-
+    if (this.isConnectionStringValid()) {
+      let cloudTable = this.tableClient.getTableReference(tableName);
       cloudTable.createIfNotExists();
       return Promise.resolve(true);
     } else {
@@ -21,9 +25,25 @@ export class NativescriptAzureStorage {
     }
   }
 
+  listTables(tableName?: string): Promise<string[]> {
+    if (this.isConnectionStringValid()) {
+      let cloudTable = tableName ? this.tableClient.listTables(tableName) : this.tableClient.listTables();
+
+      let tables = new Array<string>();
+
+      for (let table in cloudTable) {
+        tables.push(table);
+      }
+
+      return Promise.resolve(tables);
+    } else {
+      return Promise.reject('Invalid connection string');
+    }
+  }
+
   addRows(table: string, partitionKey: string, rowKeyName: string, items: any[]): Promise<any> {
     return new Promise<boolean>((resolve, reject) => {
-      if (this.connectionString) {
+      if (this.isConnectionStringValid()) {
         async.eachSeries(items, (item: any, outerCallback) => {
         this.addRow(table, item, partitionKey, item[rowKeyName])
         .then(() => outerCallback(null))
@@ -42,33 +62,27 @@ export class NativescriptAzureStorage {
   }
 
   addRow(table: string, itemToAdd: any, partitionKey: string, rowKey: string): Promise<any> {
-    if (this.connectionString) {
+    if (this.isConnectionStringValid()) {
       try {
-        let storageAccount = this.getStorageAccount();
-
-        let tableClient = storageAccount.createCloudTableClient();
-        let cloudTable = tableClient.getTableReference(table);
+        let cloudTable = this.tableClient.getTableReference(table);
         let item = new com.microsoft.azure.storage.table.DynamicTableEntity(partitionKey, rowKey);
 
         let hash = new java.util.HashMap();
         for (let property in itemToAdd) {
             if (itemToAdd.hasOwnProperty(property)) {
-
               let value = undefined;
               if (typeof itemToAdd[property] === 'boolean') {
                 value = itemToAdd[property].toString();
               } else {
                 value = itemToAdd[property];
               }
-
               let prop = new com.microsoft.azure.storage.table.EntityProperty(value);
               hash.put(property, prop);
             }
         }
         item.setProperties(hash);
 
-        let insert = com.microsoft.azure.storage.table
-                    .TableOperation.insertOrReplace(item);
+        let insert = com.microsoft.azure.storage.table.TableOperation.insertOrReplace(item);
 
         cloudTable.execute(insert);
 
@@ -81,8 +95,7 @@ export class NativescriptAzureStorage {
     }
   }
 
-  private getStorageAccount() {
-    return com.microsoft.azure.storage.CloudStorageAccount
-                            .parse(this.connectionString);
+  private isConnectionStringValid(): boolean {
+    return !!this.connectionString;
   }
 }

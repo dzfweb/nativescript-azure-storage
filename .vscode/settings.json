@@ -10,6 +10,6 @@
     "**/*.map": true,
     "**/node_modules": true,
     "**/hooks": true,
-    "**/platforms": true
+    "**/demo/platforms": true
   }
 }
