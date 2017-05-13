@@ -17,13 +17,23 @@ let azureStorage = new NativescriptAzureStorage(this.azureStorageConnectionStrin
 
 `addRow`: Insert new row from an object
 
+`listTables`: List all tables from storage
+
+`listRows`: List all rows from a specified table
+
+`createBlobContainer`: Create a blob container
+
+`deleteBlobContainer`: Delete a blob container
+
+`uploadBlob`: Upload blob
+
+`deleteBlob`: Delete blob
+
+`downloadBlob`: Download blob
+
 ## Next Version (available soon)
 `updateRow`;
 
 `deleteRow`;
-
-`listTables`;
-
-`listRows`:
 
 `Support for iOS`;
