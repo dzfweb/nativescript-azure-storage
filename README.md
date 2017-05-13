@@ -18,13 +18,20 @@ azureStorage.createTable('table')
 .catch((err) => console.log(`Error creating table: ${err}`));
 ```
 
-`addRows`: Insert new row from a list of object
-
 `addRow`: Insert new row from an object
 ```
 azureStorage.addRow('table', { foo: 'bar' }, 'partitionKey', 'rowKey')
 .then(() => console.log(`Row created successfuly!`))
 .catch((err) => console.log(`Error creating row: ${err}`));
+```
+
+`addRows`: Insert new row from a list of object
+```
+let array = new Array<any>();
+array.push({ foo: 'bar' });
+azureStorage.addRows('table', 'partitionKey', 'foo', array)
+.then(() => console.log(`Rows created successfuly!`))
+.catch((err) => console.log(`Error creating rows: ${err}`));
 ```
 
 `listTables`: List all tables from storage
@@ -39,6 +46,15 @@ azureStorage.listTables()
 ```
 
 `listRows`: List all rows from a specified table
+```
+azureStorage.listRows('table')
+.then((rows) => {
+    rows.forEach((row) => {
+        console.log(`Row:${row.partitionKey} | ${row.rowKey} | ${row.getTimestamp() }`);
+    });
+})
+.catch((err) => console.log(`Error getting rows: ${err}`));
+```
 
 `createBlobContainer`: Create a blob container
 ```
