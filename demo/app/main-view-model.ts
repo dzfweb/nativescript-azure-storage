@@ -2,10 +2,7 @@ import {Observable} from 'data/observable';
 import { NativescriptAzureStorage } from 'nativescript-azure-storage';
 
 export class HelloWorldModel extends Observable {
-    azureStorageConnectionString =
-    `DefaultEndpointsProtocol=https;` +
-    `AccountName=x;` +
-    `AccountKey=x`;
+    azureStorageConnectionString = 'DefaultEndpointsProtocol=http;AccountName=x;AccountKey=x;'
     constructor() {
         super();
 
@@ -23,9 +20,23 @@ export class HelloWorldModel extends Observable {
         })
         .catch((err) => console.log(`Error getting tables: ${err}`));
 
-        azureStorage.createTable('table')
-        .then(() => console.log(`Table Created!`))
-        .catch((err) => console.log(`Error creating table: ${err}`));
+        azureStorage.listRows('table')
+        .then((rows) => {
+            rows.forEach((row) => {
+                console.log(`Row:${row.partitionKey} | ${row.rowKey} | ${row.getTimestamp() }`);
+            });
+        })
+        .catch((err) => console.log(`Error getting tables: ${err}`));
+
+        // azureStorage.createTable('table')
+        // .then(() => console.log(`Table Created!`))
+        // .catch((err) => console.log(`Error creating table: ${err}`));
+
+        // azureStorage.downloadBlob('checkouthomolog')
+        // .then((result) => {
+        //     result.forEach((el) => console.log(el));
+        // })
+        // .catch((err) => console.log(`Error getting blob: ${err}`));
     }
 
 }
