@@ -12,6 +12,10 @@ export class HelloWorldModel extends Observable {
     public onTap() {
         let azureStorage = new NativeScriptAzureStorage(this.azureStorageConnectionString);
 
+        azureStorage.createTable('table')
+        .then(() => console.log(`Table Created!`))
+        .catch((err) => console.log(`Error creating table: ${err}`));
+
         azureStorage.listTables()
         .then((tables) => {
             tables.forEach((table) => {
@@ -27,16 +31,6 @@ export class HelloWorldModel extends Observable {
             });
         })
         .catch((err) => console.log(`Error getting tables: ${err}`));
-
-        // azureStorage.createTable('table')
-        // .then(() => console.log(`Table Created!`))
-        // .catch((err) => console.log(`Error creating table: ${err}`));
-
-        // azureStorage.downloadBlob('checkouthomolog')
-        // .then((result) => {
-        //     result.forEach((el) => console.log(el));
-        // })
-        // .catch((err) => console.log(`Error getting blob: ${err}`));
     }
 
 }
