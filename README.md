@@ -6,8 +6,8 @@
 ## Usage
 
 ```
-import { NativescriptAzureStorage } from 'nativescript-azure-storage';
-let azureStorage = new NativescriptAzureStorage(this.azureStorageConnectionString);
+import { NativeScriptAzureStorage } from 'nativescript-azure-storage';
+let azureStorage = new NativeScriptAzureStorage(this.azureStorageConnectionString);
 ```
 
 ## Available Methods

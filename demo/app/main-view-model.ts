@@ -1,5 +1,5 @@
 import {Observable} from 'data/observable';
-import { NativescriptAzureStorage } from 'nativescript-azure-storage';
+import { NativeScriptAzureStorage } from 'nativescript-azure-storage';
 
 export class HelloWorldModel extends Observable {
     azureStorageConnectionString = 'DefaultEndpointsProtocol=http;AccountName=x;AccountKey=x;'
@@ -10,7 +10,7 @@ export class HelloWorldModel extends Observable {
 
 
     public onTap() {
-        let azureStorage = new NativescriptAzureStorage(this.azureStorageConnectionString);
+        let azureStorage = new NativeScriptAzureStorage(this.azureStorageConnectionString);
 
         azureStorage.listTables()
         .then((tables) => {

@@ -1,2 +1,2 @@
-export declare class NativescriptAzureStorage {
+export declare class NativeScriptAzureStorage {
 }

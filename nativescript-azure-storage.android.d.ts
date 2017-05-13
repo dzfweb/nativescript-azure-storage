@@ -1,4 +1,4 @@
-export declare class NativescriptAzureStorage {
+export declare class NativeScriptAzureStorage {
     private storageAccount;
     private tableClient;
     private blobClient;

@@ -1,7 +1,7 @@
 import async from 'async';
 declare var com: any;
 
-export class NativescriptAzureStorage {
+export class NativeScriptAzureStorage {
   private storageAccount: any;
   private tableClient: any;
   private blobClient: any;

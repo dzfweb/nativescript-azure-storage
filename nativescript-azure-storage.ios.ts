@@ -1,3 +1,3 @@
-export class NativescriptAzureStorage {
+export class NativeScriptAzureStorage {
     // TODO
 }
