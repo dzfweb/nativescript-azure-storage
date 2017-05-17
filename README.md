@@ -94,4 +94,3 @@ azureStorage.deleteBlob('blobContainer', 'blobName')
 
 `deleteRow`;
 
-`Support for iOS`;
