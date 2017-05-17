@@ -1,3 +1,6 @@
+[![npm](https://img.shields.io/npm/v/nativescript-azure-storage.svg)](https://www.npmjs.com/package/nativescript-azure-storage)
+[![npm](https://img.shields.io/npm/dt/nativescript-azure-storage.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-azure-storage)
+
 # nativescript-azure-storage
 
 ## Installation
