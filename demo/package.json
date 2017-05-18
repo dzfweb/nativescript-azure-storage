@@ -7,11 +7,15 @@
     "id": "org.nativescript.demo",
     "tns-android": {
       "version": "3.0.0"
+    },
+    "tns-ios": {
+      "version": "3.0.1"
     }
   },
   "dependencies": {
-    "nativescript-azure-storage": "file:///C:\\Dev\\nativescript-azure-storage",
+    "nativescript-azure-storage": "file:///Users/douglas/dev/nativescript-azure-storage",
     "nativescript-theme-core": "~1.0.2",
+    "tns-android": "3.0.0",
     "tns-core-modules": "3.0.0"
   },
   "devDependencies": {
