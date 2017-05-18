@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-       "target": "es5",
+        "target": "es5",
         "module": "commonjs",
         "declaration": false,
         "removeComments": true,
@@ -21,13 +21,9 @@
         "noImplicitUseStrict": false,
         "noFallthroughCasesInSwitch": true,
         "typeRoots": [
-
             "./node_modules/@types",
-
             "./node_modules"
-
         ],
-
         "types": [],
         "baseUrl": ".",
         "paths": {

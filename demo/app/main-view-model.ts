@@ -12,25 +12,33 @@ export class HelloWorldModel extends Observable {
     public onTap() {
         let azureStorage = new NativeScriptAzureStorage(this.azureStorageConnectionString);
 
-        azureStorage.createTable('table')
-        .then(() => console.log(`Table Created!`))
-        .catch((err) => console.log(`Error creating table: ${err}`));
+        // azureStorage.deleteBlobContainer('abcd')
+        // .then(() => {
+        //     console.log('ok');
+        // })
+        // .catch((err) => {
+        //     console.log('nao ok');
+        // })
 
-        azureStorage.listTables()
-        .then((tables) => {
-            tables.forEach((table) => {
-                console.log(`Table:${table}`);
-            });
-        })
-        .catch((err) => console.log(`Error getting tables: ${err}`));
+        // azureStorage.createTable('table')
+        // .then(() => console.log(`Table Created!`))
+        // .catch((err) => console.log(`Error creating table: ${err}`));
 
-        azureStorage.listRows('table')
-        .then((rows) => {
-            rows.forEach((row) => {
-                console.log(`Row:${row.partitionKey} | ${row.rowKey} | ${row.getTimestamp() }`);
-            });
-        })
-        .catch((err) => console.log(`Error getting tables: ${err}`));
+        // azureStorage.listTables()
+        // .then((tables) => {
+        //     tables.forEach((table) => {
+        //         console.log(`Table:${table}`);
+        //     });
+        // })
+        // .catch((err) => console.log(`Error getting tables: ${err}`));
+
+        // azureStorage.listRows('table')
+        // .then((rows) => {
+        //     rows.forEach((row) => {
+        //         console.log(`Row:${row.partitionKey} | ${row.rowKey} | ${row.getTimestamp() }`);
+        //     });
+        // })
+        // .catch((err) => console.log(`Error getting tables: ${err}`));
     }
 
 }
