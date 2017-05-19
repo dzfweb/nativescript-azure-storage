@@ -13,8 +13,45 @@ import { NativeScriptAzureStorage } from 'nativescript-azure-storage';
 let azureStorage = new NativeScriptAzureStorage(this.azureStorageConnectionString);
 ```
 
-## Available Methods
-`createTable`: Create table with the specified name
+## Available Methods for Android and iOS
+`createBlobContainer`: Create a blob container
+```
+azureStorage.createBlobContainer('blobContainer')
+.then(() => console.log(`Blog container Created!`))
+.catch((err) => console.log(`Error creating blob container: ${err}`));
+```
+
+`deleteBlobContainer`: Delete a blob container
+```
+azureStorage.deleteBlobContainer('blobContainer')
+.then(() => console.log(`Blog container deleted!`))
+.catch((err) => console.log(`Error deleting blob container: ${err}`));
+```
+
+`uploadBlob`: Upload blob
+```
+azureStorage.uploadBlob('blobContainer', 'blobName', 'Hello World!')
+.then(() => console.log(`Uploaded successfuly`))
+.catch((err) => console.log(`Error uploading: ${err}`));
+```
+
+`deleteBlob`: Delete blob
+```
+azureStorage.deleteBlob('blobContainer', 'blobName')
+.then(() => console.log(`Blob deleted successfuly`))
+.catch((err) => console.log(`Error deleting blob: ${err}`));
+```
+
+`downloadBlob`: Download blob
+```
+azureStorage.downloadBlob('blobContainer', 'blobName')
+.then((blob) => console.log(`Blob downloaded successfuly`))
+.catch((err) => console.log(`Error getting tables: ${err}`));
+```
+
+## Available Methods only for Android (for now)
+
+`createTable`: Create table with the specified name 
 ```
 azureStorage.createTable('table')
 .then(() => console.log(`Table Created!`))
@@ -59,39 +96,11 @@ azureStorage.listRows('table')
 .catch((err) => console.log(`Error getting rows: ${err}`));
 ```
 
-`createBlobContainer`: Create a blob container
-```
-azureStorage.createBlobContainer('blobContainer')
-.then(() => console.log(`Blog container Created!`))
-.catch((err) => console.log(`Error creating blob container: ${err}`));
-```
-
-`deleteBlobContainer`: Delete a blob container
-```
-azureStorage.deleteBlobContainer('blobContainer')
-.then(() => console.log(`Blog container deleted!`))
-.catch((err) => console.log(`Error deleting blob container: ${err}`));
-```
-
-`uploadBlob`: Upload blob
-```
-azureStorage.uploadBlob('blobContainer', 'blobName', 'Hello World!')
-.then(() => console.log(`Uploaded successfuly`))
-.catch((err) => console.log(`Error uploading: ${err}`));
-```
-
-`deleteBlob`: Delete blob
-```
-azureStorage.deleteBlob('blobContainer', 'blobName')
-.then(() => console.log(`Blob deleted successfuly`))
-.catch((err) => console.log(`Error deleting blob: ${err}`));
-```
-
-`downloadBlob`: Download blob
-
 ## Next Version (available soon)
 `updateRow`;
 
 `deleteRow`;
+
+`tables methods for iOS`
 
 
