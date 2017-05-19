@@ -3,6 +3,7 @@ export declare class NativeScriptAzureStorage {
 	private tableClient;
 	private blobClient;
 	private connectionString;
+	private error;
 	constructor(connectionString: string);
 	createTable(tableName: string): Promise<any>;
 	uploadBlob(containerName: string, blobName: string, blobValue: any): Promise<any>;
