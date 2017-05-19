@@ -11,16 +11,43 @@ export class NativeScriptAzureStorage {
         this.blobClient = this.storageAccount.getBlobClient();
     }
     uploadBlob(containerName: string, blobName: string, blobValue: any): Promise<any> {
-        return Promise.resolve('ok');
+        try {
+            let container = this.blobClient.containerReferenceFromName(containerName);
+            let blob = container.blockBlobReferenceFromName(blobName);
+            blob.uploadFromTextCompletionHandler(blobValue, null);
+            return Promise.resolve(true);
+        } catch (ex) {
+            return Promise.reject(ex);
+        }
     }
     deleteBlob(containerName: string, blobName: string): Promise<any> {
-        return Promise.resolve('ok');
+        try {
+            let container = this.blobClient.containerReferenceFromName(containerName);
+            let blob = container.blockBlobReferenceFromName(blobName);
+            blob.deleteWithCompletionHandler(null);
+            return Promise.resolve(true);
+        } catch (ex) {
+            return Promise.reject(ex);
+        }
     }
-    downloadBlob(containerName: string): Promise<any> {
-        return Promise.resolve('ok');
+    downloadBlob(containerName: string, blobName: string): Promise<any> {
+        try {
+            let container = this.blobClient.containerReferenceFromName(containerName);
+            let blob = container.blockBlobReferenceFromName(blobName);
+            blob.downloadToTextWithCompletionHandler(null);
+            return Promise.resolve(null);
+        } catch (ex) {
+            return Promise.reject(ex);
+        }
     }
     deleteBlobContainer(containerName: string): Promise<any> {
-        return Promise.resolve('ok');
+        try {
+            let container = this.blobClient.containerReferenceFromName(containerName);
+            container.deleteContainerIfExistsWithCompletionHandler(null);
+            return Promise.resolve(true);
+        } catch (ex) {
+            return Promise.reject(ex);
+        }
     }
     createBlobContainer(containerName: string): Promise<any> {
         try {

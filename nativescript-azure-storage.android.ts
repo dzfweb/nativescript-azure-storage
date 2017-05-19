@@ -49,7 +49,7 @@ export class NativeScriptAzureStorage {
     }
   }
 
-  downloadBlob(containerName: string): Promise<any> {
+  downloadBlob(containerName: string, blobName: string): Promise<any> {
     try {
       let list = new Array<any>();
       let container = this.blobClient.getContainerReference(containerName);
